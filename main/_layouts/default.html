@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager also goes in body-->
+
+    <!-- End Google Tag Manager -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Turf Automations">
+    <meta name="keywords" content="Turf Automations">
+
+    <title>Turf Automations</title>
+
+    <!-- Styles -->
+    <link href={{ "/assets/css/page.min.css" | absolute_url }} rel="stylesheet">
+    <link href="./assets/css/style.css" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="./assets/js/page.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+
+    <!-- Favicons -->
+    <link rel="icon" href={{ "/assets/img/favicon.ico" | absolute_url }}>
+  </head>
+
+  <body>
+
+    <!-- Topbar -->
+    <!-- override certain style rules for topbar -->
+    <!-- <style scoped>
+      .topbar {
+        background-color: #252641 !important;
+        font-weight: 600;
+        height:48px;
+      }
+    </style>
+    <section class="topbar bg-dark d-flex">
+      <div class="container">
+        <div></div>
+        <div style="color:#FFE654;">Announcement Goes Here</div>
+        <div></div>
+      </div>
+    </section> -->
+    <!-- /.topbar -->
+
+    {% include navbar.html %}
+
+    {{ content }}
+
+    {% include footer.html %}
+
+   <!-- /.footer -->
+   <script src={{ "../assets/js/page.min.js" | absolute_url }}></script>
+   <script src={{ "../assets/js/script.js" | absolute_url }}></script>
+  </body>
+</html>
