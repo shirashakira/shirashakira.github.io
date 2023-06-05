@@ -206,7 +206,6 @@ function makeAndPrintTurfLabelPDF() {
   var rollFeet = document.querySelector('#rollFeet').value;
   console.log("rollFeet: " + rollFeet)
 
-
   /*
   //for roll in rollStart...rollEnd {
     //make the PDF
