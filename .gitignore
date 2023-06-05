@@ -1,0 +1,7 @@
+.DS_Store
+
+# dont need this from jekyll i dont think
+_site/
+marketing-site/.sass-cache/
+marketing-site/.jekyll-cache/
+marketing-site/.jekyll-metadata
