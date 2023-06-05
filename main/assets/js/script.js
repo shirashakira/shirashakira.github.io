@@ -27,7 +27,7 @@ $(function() {
     |
     */
 
-    googleApiKey: 'AIzaSyDRBLFOTTh2NFM93HpUA4ZrA99yKnCAsto',
+    googleApiKey: '',
 
     /*
     |--------------------------------------------------------------------------
@@ -101,5 +101,131 @@ $(function() {
 
 
 
+
+  //print button starts disabled
+  const printButton = document.getElementById('makePrintButton');
+  printButton.disabled = true;
+
+  //then we add checks for each input
+  const turfName = document.getElementById('turfName');
+  const dyeLot = document.getElementById('dyeLot');
+  const rollStart = document.getElementById('rollStart');
+  const rollEnd = document.getElementById('rollEnd');
+  const rollType = document.getElementById('rollType');
+  const containterNum = document.getElementById('containterNum');
+  const rollFeet = document.getElementById('rollFeet');
+
+  var isValidTurfName = false;
+  var isValidDyeLot = false;
+  var isValidRollStart = false;
+  var isValidRollEnd = false;
+  var isValidRollType = false;
+  var isValidContainerNum = false;
+  var isValidRollFeet = false;
+
+  turfName.addEventListener('keyup', function (event) {
+    isValidTurfName = turfName.checkValidity();
+    console.log("test")
+    if (isValidTurfName && isValidDyeLot && isValidRollStart && isValidRollEnd && isValidRollType && isValidContainerNum && isValidRollFeet) {
+      printButton.disabled = false;
+    } else {
+      printButton.disabled = true;
+    }
+  });
+
+  dyeLot.addEventListener('keyup', function (event) {
+    isValidDyeLot = dyeLot.checkValidity();
+
+    if (isValidTurfName && isValidDyeLot && isValidRollStart && isValidRollEnd && isValidRollType && isValidContainerNum && isValidRollFeet) {
+      printButton.disabled = false;
+    } else {
+      printButton.disabled = true;
+    }
+  });
+
+  rollStart.addEventListener('keyup', function (event) {
+    isValidRollStart = rollStart.checkValidity();
+
+    if (isValidTurfName && isValidDyeLot && isValidRollStart && isValidRollEnd && isValidRollType && isValidContainerNum && isValidRollFeet) {
+      printButton.disabled = false;
+    } else {
+      printButton.disabled = true;
+    }
+  });
+
+  rollEnd.addEventListener('keyup', function (event) {
+    isValidRollEnd = rollEnd.checkValidity();
+
+    if (isValidTurfName && isValidDyeLot && isValidRollStart && isValidRollEnd && isValidRollType && isValidContainerNum && isValidRollFeet) {
+      printButton.disabled = false;
+    } else {
+      printButton.disabled = true;
+    }
+  });
+
+  rollType.addEventListener('keyup', function (event) {
+    isValidRollType = rollType.checkValidity();
+
+    if (isValidTurfName && isValidDyeLot && isValidRollStart && isValidRollEnd && isValidRollType && isValidContainerNum && isValidRollFeet) {
+      printButton.disabled = false;
+    } else {
+      printButton.disabled = true;
+    }
+  });
+
+  containterNum.addEventListener('keyup', function (event) {
+    isValidContainerNum = containterNum.checkValidity();
+
+    if (isValidTurfName && isValidDyeLot && isValidRollStart && isValidRollEnd && isValidRollType && isValidContainerNum && isValidRollFeet) {
+      printButton.disabled = false;
+    } else {
+      printButton.disabled = true;
+    }
+  });
+
+  rollFeet.addEventListener('keyup', function (event) {
+    isValidRollFeet = rollFeet.checkValidity();
+
+    if (isValidTurfName && isValidDyeLot && isValidRollStart && isValidRollEnd && isValidRollType && isValidContainerNum && isValidRollFeet) {
+      printButton.disabled = false;
+    } else {
+      printButton.disabled = true;
+    }
+  });
+
 });
 
+function makeAndPrintTurfLabelPDF() {
+  //Max write your function to take the form data and turn that into PDFs that look like the example given to us.
+
+  //grab the form data
+
+  var name = document.querySelector('#turfName').value;
+  console.log("name: " + name)
+
+  var dyeLot = document.querySelector('#dyeLot').value;
+  console.log("dyeLot: " + dyeLot)
+
+  var rollStart = document.querySelector('#rollStart').value;
+  console.log("rollStart: " + rollStart)
+
+  var rollEnd = document.querySelector('#rollEnd').value;
+  console.log("rollEnd: " + rollEnd)
+
+  var rollType = document.querySelector('#rollType').value;
+  console.log("rollType: " + rollType)
+
+  var containerNumber = document.querySelector('#containterNum').value;
+  console.log("containerNumber: " + containerNumber)
+
+  var rollFeet = document.querySelector('#rollFeet').value;
+  console.log("rollFeet: " + rollFeet)
+
+
+  /*
+  //for roll in rollStart...rollEnd {
+
+  }
+  */
+  printJS('../turfdocs/example.pdf')
+}

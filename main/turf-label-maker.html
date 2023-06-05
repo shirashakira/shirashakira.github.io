@@ -24,39 +24,39 @@ layout: default
           <div class="row">
             <div class="col-md-4 mx-auto">
 
-              <form class="input-border">
+              <form class="input-border" id="turfDetailsForm">
 
                 <div class="form-group">
-                  <input class="form-control" type="text" placeholder="Name">
+                  <input class="form-control" type="text" placeholder="Name" id="turfName" required>
                 </div>
 
                 <div class="form-group">
-                  <input class="form-control" type="text" placeholder="Dye Lot">
+                  <input class="form-control" type="text" placeholder="Dye Lot" id="dyeLot" required>
                 </div>
 
                 <div class="form-group">
-                  <input class="form-control" type="number" placeholder="Roll Number Start" min="1">
+                  <input class="form-control" type="number" placeholder="Roll Number Start" min="1" id="rollStart" required>
                 </div>
 
                 <div class="form-group">
-                  <input class="form-control" type="number" placeholder="Roll Number End" min="1">
+                  <input class="form-control" type="number" placeholder="Roll Number End" min="1" id="rollEnd" required>
                 </div>
 
                 <div class="form-group">
-                  <input class="form-control" type="text" placeholder="Type">
+                  <input class="form-control" type="text" placeholder="Type" id="rollType" required>
                 </div>
 
                 <div class="form-group">
-                  <input class="form-control" type="text" placeholder="Containter #">
+                  <input class="form-control" type="text" placeholder="Containter #" id="containterNum" required>
                 </div>
 
                 <div class="form-group">
-                  <input class="form-control" type="number" placeholder="Linear Feet" min="1">
+                  <input class="form-control" type="number" placeholder="Linear Feet" min="1" id="rollFeet" required>
                 </div>
 
               </form>
 
-              <button type="button" class="btn btn-primary" onclick="printJS('../turfdocs/example.pdf')"">Print</button>
+              <button type="button" class="btn btn-primary" onclick="makeAndPrintTurfLabelPDF()" id="makePrintButton"" >Print</button>
 
             </div>
           </div>
