@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager also goes in body-->
+
+    <!-- End Google Tag Manager -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Turf Automations">
+    <meta name="keywords" content="Turf Automations">
+
+    <title>Turf Automations</title>
+
+    <!-- Styles -->
+    <link href={{ "/assets/css/page.min.css" | absolute_url }} rel="stylesheet">
+    <link href="./assets/css/style.css" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="./assets/js/page.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+
+    <!-- https://printjs.crabbly.com/ -->
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+    <script src="https://printjs-4de6.kxcdn.com/print.min.css"></script>
+
+
+
+
+
+    <!-- Favicons -->
+    <link rel="icon" href={{ "/assets/img/favicon.ico" | absolute_url }}>
+  </head>
+
+  <body>
+
+    {% include navbar.html %}
+
+    {{ content }}
+
+    {% include footer.html %}
+
+   <!-- /.footer -->
+   <script src={{ "../assets/js/page.min.js" | absolute_url }}></script>
+   <script src={{ "../assets/js/script.js" | absolute_url }}></script>
+  </body>
+</html>

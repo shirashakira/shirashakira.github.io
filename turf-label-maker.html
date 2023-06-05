@@ -1,0 +1,72 @@
+---
+layout: default
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Turf Label Printer</title>
+  </head>
+
+  <body
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <section class="section bg-gray">
+        <div class="container">
+          <div class="container">
+            <header class="section-header" style="margin-top:-50px;">
+              <h4>Turf Label Maker/Printer</h4>
+              <p class="lead-2 mt-6">Easily Make Turf labels</p>
+            </header>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 mx-auto">
+
+              <form class="input-border" id="turfDetailsForm">
+
+                <div class="form-group">
+                  <input class="form-control" type="text" placeholder="Name" id="turfName" required>
+                </div>
+
+                <div class="form-group">
+                  <input class="form-control" type="text" placeholder="Dye Lot" id="dyeLot" required>
+                </div>
+
+                <div class="form-group">
+                  <input class="form-control" type="number" placeholder="Roll Number Start" min="1" id="rollStart" required>
+                </div>
+
+                <div class="form-group">
+                  <input class="form-control" type="number" placeholder="Roll Number End" min="1" id="rollEnd" required>
+                </div>
+
+                <div class="form-group">
+                  <input class="form-control" type="text" placeholder="Type" id="rollType" required>
+                </div>
+
+                <div class="form-group">
+                  <input class="form-control" type="text" placeholder="Containter #" id="containterNum" required>
+                </div>
+
+                <div class="form-group">
+                  <input class="form-control" type="number" placeholder="Linear Feet" min="1" id="rollFeet" required>
+                </div>
+
+              </form>
+
+              <button type="button" class="btn btn-primary" onclick="makeAndPrintTurfLabelPDF()" id="makePrintButton"" >Print</button>
+
+            </div>
+          </div>
+
+
+        </div>
+      </section>
+
+
+
+    </main>
+  </body>
+</html>
