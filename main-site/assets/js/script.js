@@ -124,13 +124,15 @@ $(function() {
   var isValidRollFeet = false;
 
   turfTypes.addEventListener('change', function () {
+    console.log("test")
     const turfTypeSelected = turfTypesInput.value
     if (turfTypeSelected === "Evernatural Premium") {
-      turfName.value = this.value.uppercase;
+      turfName.value = this.value.toUpperCase();
       rollFeet.value = 100
     } else if (turfTypeSelected === "Evernatural Classic") {
       turfName.value = this.value.toUpperCase();
       rollFeet.value = 100
+
     } else if (turfTypeSelected === "Sequoia") {
       turfName.value = this.value.toUpperCase();
       rollFeet.value = 75
@@ -157,16 +159,16 @@ $(function() {
       rollFeet.value = 100
     }
 
-  });
+    isValidTurfName = turfName.checkValidity();
+    isValidRollFeet = rollFeet.checkValidity();
 
-  // turfTypes.addEventListener('change', function(event)) {
-  //   console.log("does this hit? it will?");
-  //
-  //   const turfTypeSelected = turfTypesInput.value
-    // if (turfTypeSelected === "Evernatural Premium") {
-    //   rollFeet.value = "test"
-    // }
-  // });
+    if (isValidTurfName && isValidDyeLot && isValidRollStart && isValidRollEnd && isValidSoNum && isValidContainerNum && isValidRollFeet) {
+      printButton.disabled = false;
+    } else {
+      printButton.disabled = true;
+    }
+
+  });
 
   turfName.addEventListener('keyup', function (event) {
     isValidTurfName = turfName.checkValidity();
@@ -346,7 +348,7 @@ function setupTurfLabel(rollNumber) {
               <div style="color: black; font-size: 7.5vw; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${dyeLot}</div>
               <br>
               <div style="color: black; font-size: 20px; font-family: Calibri, Helvetica, sans-serif;"><b>ROLL #</b></div>
-              <div style="margin-top:-30px; text-align: center; color: black; font-size: 180px; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${rollNumber}</div>
+              <div style="margin-top:-30px; text-align: center; color: black; font-size: 180px; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${rollNumber.toString().padStart(2,'0')}</div>
           </div>
           <div id="turfSecond">
             <div style="color: black; font-size: 20px; font-family: Calibri, Helvetica, sans-serif;"><b>NAME</b></div>
@@ -356,7 +358,7 @@ function setupTurfLabel(rollNumber) {
             <div style="color: black; font-size: 7.5vw; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${dyeLot}</div>
             <br>
             <div style="color: black; font-size: 20px; font-family: Calibri, Helvetica, sans-serif;"><b>ROLL #</b></div>
-            <div style="margin-top: -30px; text-align: center; color: black; font-size: 180px; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${rollNumber}</div>
+            <div style="margin-top: -30px; text-align: center; color: black; font-size: 180px; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${rollNumber.toString().padStart(2,'0')}</div>
           </div>
       </div>
 
