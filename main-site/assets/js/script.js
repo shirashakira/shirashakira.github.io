@@ -2,7 +2,6 @@
 
 $(function() {
 
-
   /*
   |--------------------------------------------------------------------------
   | Configure your website
@@ -104,7 +103,7 @@ $(function() {
 
   //print button starts disabled
   const printButton = document.getElementById('makePrintButton');
-  printButton.disabled = true;
+  //printButton.disabled = true;
 
   //then we add checks for each input
   const turfName = document.getElementById('turfName');
@@ -127,7 +126,7 @@ $(function() {
     if (isValidTurfName && isValidDyeLot && isValidRollStart && isValidRollEnd && isValidContainerNum && isValidRollFeet) {
       printButton.disabled = false;
     } else {
-      printButton.disabled = true;
+      //printButton.disabled = true;
     }
   });
 
@@ -137,7 +136,7 @@ $(function() {
     if (isValidTurfName && isValidDyeLot && isValidRollStart && isValidRollEnd && isValidContainerNum && isValidRollFeet) {
       printButton.disabled = false;
     } else {
-      printButton.disabled = true;
+      //printButton.disabled = true;
     }
   });
 
@@ -147,7 +146,7 @@ $(function() {
     if (isValidTurfName && isValidDyeLot && isValidRollStart && isValidRollEnd && isValidContainerNum && isValidRollFeet) {
       printButton.disabled = false;
     } else {
-      printButton.disabled = true;
+      //printButton.disabled = true;
     }
   });
 
@@ -157,7 +156,7 @@ $(function() {
     if (isValidTurfName && isValidDyeLot && isValidRollStart && isValidRollEnd && isValidContainerNum && isValidRollFeet) {
       printButton.disabled = false;
     } else {
-      printButton.disabled = true;
+      //printButton.disabled = true;
     }
   });
 
@@ -167,7 +166,7 @@ $(function() {
     if (isValidTurfName && isValidDyeLot && isValidRollStart && isValidRollEnd && isValidContainerNum && isValidRollFeet) {
       printButton.disabled = false;
     } else {
-      printButton.disabled = true;
+      //printButton.disabled = true;
     }
   });
 
@@ -177,11 +176,18 @@ $(function() {
     if (isValidTurfName && isValidDyeLot && isValidRollStart && isValidRollEnd && isValidContainerNum && isValidRollFeet) {
       printButton.disabled = false;
     } else {
-      printButton.disabled = true;
+    //  printButton.disabled = true;
     }
   });
 
 });
+
+function makeAndSaveTurfLabel() {
+  const htmlContent = '<html><body><h1>Hello, World!</h1></body></html>';
+  const fileName = 'example.html';
+
+  generateAndSaveHTMLToMachine(htmlContent, fileName);
+}
 
 function makeAndPrintTurfLabelPDF() {
   //Max write your function to take the form data and turn that into PDFs that look like the example given to us.
@@ -211,11 +217,61 @@ function makeAndPrintTurfLabelPDF() {
     //make the PDF
   }
   */
-  printJS('../turfdocs/example.pdf')
+  //printJS('../turfdocs/example.pdf')
+  const htmlContent = `
+          <html>
+            <body>
+              <h1>Turf Name: ${name}</h1>
+              <h2>Roll Start: ${rollStart}</h2>
+            </body>
+          </html>
+        `;
+
+  const options = {
+    jsPDF: { format: 'a4', orientation: 'landscape' }
+  };
+
+  html2pdf().set(options).from(htmlContent).toPdf().output('blob').then((pdfBlob) => {
+    const pdfUrl = URL.createObjectURL(pdfBlob);
+    printJS(pdfUrl);
+  });
+
+  //generateAndSaveHTMLToFileStructure()
 }
 
 function leadingZeros(input) {
   if(!isNaN(input.value) && input.value.length === 1) {
     input.value = '0' + input.value;
   }
+}
+
+//this is if we want to save it to the machine
+function generateAndSaveHTMLToMachine(htmlContent, fileName) {
+  // Create a blob object with the HTML content
+  const blob = new Blob([htmlContent], { type: 'text/html' });
+
+  // Create a URL for the blob
+  const url = URL.createObjectURL(blob);
+
+  // Create a link element
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = fileName;
+
+  // Simulate a click on the link to trigger the file download
+  link.click();
+
+  // Clean up the URL object
+  URL.revokeObjectURL(url);
+}
+
+//this is if we want to save it to the file structure
+function generateAndSaveHTMLToFileStructure(htmlContent, fileName) {
+  fs.writeFile(fileName, htmlContent, (err) => {
+    if (err) {
+      console.error('Error saving HTML file:', err);
+      return;
+    }
+    console.log('HTML file saved successfully!');
+  });
 }
