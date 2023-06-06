@@ -270,6 +270,7 @@ function generateHTMLOutputForTurfLabel() {
   for (let i = rollStart; i <= rollEnd; i++) {
     if (i > 0) {
       let pageBreak = '<div style="page-break-before: always;"> </div>'
+
       if (i < 2) {
         mergedHTML = mergedHTML + setupTurfLabel(i)
       } else {
@@ -312,7 +313,7 @@ function setupHTMLBeginning() {
           }
           th, td {
             padding: 5px;
-            padding-bottom: 20px;
+            padding-bottom: 17px;
             text-align: left;
             color: black;
           }
@@ -364,7 +365,7 @@ function setupTurfLabel(rollNumber) {
 
       <div style="page-break-before: always;"> </div>
 
-      <div style="margin-top: 20px; margin-left: 20px;">
+      <div style="margin-top: 40px; margin-left: 20px;">
 
           <table style="width:35%">
             <tr>
