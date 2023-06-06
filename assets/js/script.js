@@ -363,9 +363,9 @@ function setupTurfLabel(rollNumber) {
           </div>
       </div>
 
-      <div style="page-break-before: always;"> </div>
+      <div style="page-break-after: always; margin-bottom:20px;"> </div>
 
-      <div style="margin-top: 40px; margin-left: 20px;">
+      <div style="margin-top: 50px; margin-left: 20px;">
 
           <table style="width:35%">
             <tr>
