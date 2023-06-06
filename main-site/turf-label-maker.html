@@ -27,6 +27,22 @@ layout: default
               <form class="input-border" id="turfDetailsForm">
 
                 <div class="form-group">
+                  <select class="form-control" id="turfTypes">
+                    <option value="" disabled selected>Optional Turf Types</option>
+                    <option>Evernatural Premium</option>
+                    <option>Evernatural Classic</option>
+                    <option>Sequoia</option>
+                    <option>Sequoia Lite</option>
+                    <option>Coastal Plush</option>
+                    <option>Monte Verde</option>
+                    <option>Monte Verde Lite</option>
+                    <option>Willow</option>
+                    <option>Professional Play</option>
+                    <option>Performance Putt</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
                   <input class="form-control" type="text" placeholder="Name" id="turfName" required>
                 </div>
 
@@ -43,6 +59,10 @@ layout: default
                 </div>
 
                 <div class="form-group">
+                  <input class="form-control" type="text" placeholder="SO #" id="soNum" required>
+                </div>
+
+                <div class="form-group">
                   <input class="form-control" type="text" placeholder="Containter #" id="containterNum" required>
                 </div>
 
@@ -53,7 +73,6 @@ layout: default
               </form>
 
               <button type="button" class="btn btn-primary" onclick="makeAndPrintTurfLabelPDF()" id="makePrintButton"" >Print</button>
-              <button type="button" class="btn btn-primary" onclick="makeAndSaveTurfLabel()" id="makePrintButton" style="float:right;"" >Save</button>
 
             </div>
           </div>
