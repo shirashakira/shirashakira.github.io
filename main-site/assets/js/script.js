@@ -269,7 +269,7 @@ function generateHTMLOutputForTurfLabel() {
   var mergedHTML = setupHTMLBeginning()
   for (let i = rollStart; i <= rollEnd; i++) {
     if (i > 0) {
-      let pageBreak = '<div style="page-break-before: always;"> </div>'
+      let pageBreak = '<div style="page-break-before: always;"></div>'
 
       if (i < 2) {
         mergedHTML = mergedHTML + setupTurfLabel(i)
@@ -291,6 +291,7 @@ function setupHTMLBeginning() {
     <head>
       <style>
           #turfWrapper {
+              height:95%;
               width:100%;
               overflow: hidden; /* will contain if #first is longer than #second */
           }
@@ -301,12 +302,8 @@ function setupHTMLBeginning() {
           #turfSecond {
               width: 49%;
               overflow: hidden; /* if you don't want #second to wrap below #first */
+              padding-left: 20px;
           }
-          #turfTtitle {
-              font-family: Arial, Helvetica, sans-serif;
-              font-size: 40px;
-          }
-
           table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
@@ -340,34 +337,35 @@ function setupTurfLabel(rollNumber) {
   var soNum = document.querySelector('#soNum').value;
 
   const html = `
-      <div id="turfWrapper" style="margin-top: 40px; margin-left: 20px;">
+      <div id="turfWrapper" style="margin-top: 25px; margin-left: 20px; position:absolute;">
           <div id="turfFirst" style="">
-              <div style="color: black; font-size: 20px; font-family: Calibri, Helvetica, sans-serif;"><b>NAME</b></div>
-              <div style="color: black; font-size: calc(2vw + 15px); font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${name}</div>
+              <div style="color: black; font-size: 25px; font-family: Calibri, Helvetica, sans-serif;"><b>NAME</b></div>
+              <div style="color: black; font-size: 30pt; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${name}</div>
               <br>
-              <div style="color: black; font-size: 20px; font-family: Calibri, Helvetica, sans-serif;"><b>DYE LOT</b></div>
-              <div style="color: black; font-size: 7.5vw; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${dyeLot}</div>
+              <div style="color: black; font-size: 25px; font-family: Calibri, Helvetica, sans-serif;"><b>DYE LOT</b></div>
+              <div style="color: black; font-size: 7vw; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${dyeLot}</div>
               <br>
-              <div style="color: black; font-size: 20px; font-family: Calibri, Helvetica, sans-serif;"><b>ROLL #</b></div>
-              <div style="margin-top:-30px; text-align: center; color: black; font-size: 180px; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${rollNumber.toString().padStart(2,'0')}</div>
+              <div style="color: black; font-size: 25px; font-family: Calibri, Helvetica, sans-serif;"><b>ROLL #</b></div>
+              <div style="margin-top:-120px; text-align: center; color: black; font-size: 200pt; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${rollNumber.toString().padStart(2,'0')}</div>
           </div>
           <div id="turfSecond">
-            <div style="color: black; font-size: 20px; font-family: Calibri, Helvetica, sans-serif;"><b>NAME</b></div>
-            <div style="color: black; font-size: calc(2vw + 15px); font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${name}</div>
+            <div style="color: black; font-size: 25px; font-family: Calibri, Helvetica, sans-serif;"><b>NAME</b></div>
+            <div style="color: black; font-size: 30pt; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${name}</div>
             <br>
-            <div style="color: black; font-size: 20px; font-family: Calibri, Helvetica, sans-serif;"><b>DYE LOT</b></div>
-            <div style="color: black; font-size: 7.5vw; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${dyeLot}</div>
+            <div style="color: black; font-size: 25px; font-family: Calibri, Helvetica, sans-serif;"><b>DYE LOT</b></div>
+            <div style="color: black; font-size: 7vw; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${dyeLot}</div>
             <br>
-            <div style="color: black; font-size: 20px; font-family: Calibri, Helvetica, sans-serif;"><b>ROLL #</b></div>
-            <div style="margin-top: -30px; text-align: center; color: black; font-size: 180px; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${rollNumber.toString().padStart(2,'0')}</div>
+            <div style="color: black; font-size: 25px; font-family: Calibri, Helvetica, sans-serif;"><b>ROLL #</b></div>
+            <div style="margin-top: -120px; text-align: center; color: black; font-size: 200pt; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${rollNumber.toString().padStart(2,'0')}</div>
           </div>
       </div>
 
-      <div style="page-break-after: always; margin-bottom:20px;"> </div>
+      <div style="page-break-before: always;"> </div>
+      <br>
 
-      <div style="margin-top: 50px; margin-left: 20px;">
+      <div style="margin-left: 20px; margin-top:30px; position:absolute;">
 
-          <table style="width:35%">
+          <table style="width:35%;">
             <tr>
               <th>TYPE:</th>
               <td>${name}</td>
