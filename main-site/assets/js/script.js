@@ -128,7 +128,7 @@ $(function() {
   turfName.value = "EVERNATURAL PREMIUM"
   dyeLot.value = "CP326293"
   rollStart.value = "01"
-  rollEnd.value = "12"
+  rollEnd.value = "21"
   containterNum.value = "TGBU7792184"
   soNum.value = "181258"
   rollFeet.value = 100
@@ -361,8 +361,8 @@ function setupTurfLabel(rollNumber) {
   var rollFeet = document.querySelector('#rollFeet').value;
   var soNum = document.querySelector('#soNum').value;
 
-  var frontTop = 20 + (0 + ((1586 + 3) * (rollNumber - 1)))
-  var backTop = 20 + (793 + ((1586 + 3) * (rollNumber - 1)))
+  var frontTop = 20 + (0 + ((1586 + 0) * (rollNumber - 1)))
+  var backTop = 20 + (793 + ((1586 + 0) * (rollNumber - 1)))
 
   const html = `
       <div id="turfWrapper" style="top:${frontTop}px; margin-left: 20px; position:absolute;">
