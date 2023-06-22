@@ -98,9 +98,6 @@ $(function() {
   |
   */
 
-
-
-
   //print button starts disabled
   const printButton = document.getElementById('makePrintButton');
   printButton.disabled = true;
@@ -133,15 +130,14 @@ $(function() {
   // soNum.value = "181258"
   // rollFeet.value = 100
   //
-  // var isValidTurfName = true;
-  // var isValidDyeLot = true;
-  // var isValidRollStart = true;
-  // var isValidRollEnd = true;
-  // var isValidSoNum = true;
-  // var isValidContainerNum = true;
-  // var isValidRollFeet = true;
+  var isValidTurfName = true;
+  var isValidDyeLot = true;
+  var isValidRollStart = true;
+  var isValidRollEnd = true;
+  var isValidSoNum = true;
+  var isValidContainerNum = true;
+  var isValidRollFeet = true;
   //comment out when not testing
-
 
 
   turfTypes.addEventListener('change', function () {
