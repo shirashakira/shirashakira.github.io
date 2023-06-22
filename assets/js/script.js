@@ -123,8 +123,28 @@ $(function() {
   var isValidContainerNum = false;
   var isValidRollFeet = false;
 
+  //for testing
+  printButton.disabled = false;
+  turfName.value = "EVERNATURAL PREMIUM"
+  dyeLot.value = "CP326293"
+  rollStart.value = "01"
+  rollEnd.value = "12"
+  containterNum.value = "TGBU7792184"
+  soNum.value = "181258"
+  rollFeet.value = 100
+
+  var isValidTurfName = true;
+  var isValidDyeLot = true;
+  var isValidRollStart = true;
+  var isValidRollEnd = true;
+  var isValidSoNum = true;
+  var isValidContainerNum = true;
+  var isValidRollFeet = true;
+  //comment out when not testing
+
+
+
   turfTypes.addEventListener('change', function () {
-    console.log("test")
     const turfTypeSelected = turfTypesInput.value
     if (turfTypeSelected === "Evernatural Premium") {
       turfName.value = this.value.toUpperCase();
@@ -172,7 +192,6 @@ $(function() {
 
   turfName.addEventListener('keyup', function (event) {
     isValidTurfName = turfName.checkValidity();
-    console.log("test")
     if (isValidTurfName && isValidDyeLot && isValidRollStart && isValidRollEnd && isValidSoNum && isValidContainerNum && isValidRollFeet) {
       printButton.disabled = false;
     } else {
@@ -251,7 +270,7 @@ function makeAndPrintTurfLabelPDF() {
 
   html2pdf().set(options).from(htmlContent).toPdf().output('blob').then((pdfBlob) => {
     const pdfUrl = URL.createObjectURL(pdfBlob);
-    printJS(pdfUrl);
+    printJS({printable:pdfUrl, type:'pdf', showModal:true});
   });
 }
 
@@ -266,19 +285,17 @@ function generateHTMLOutputForTurfLabel() {
   var rollStart = document.querySelector('#rollStart').value;
   var rollEnd = document.querySelector('#rollEnd').value;
 
+  //start the html
   var mergedHTML = setupHTMLBeginning()
+
+  //add each pages html
   for (let i = rollStart; i <= rollEnd; i++) {
     if (i > 0) {
-      let pageBreak = '<div style="page-break-before: always;"></div>'
-
-      if (i < 2) {
         mergedHTML = mergedHTML + setupTurfLabel(i)
-      } else {
-        mergedHTML = mergedHTML + pageBreak + setupTurfLabel(i)
-      }
     }
   }
 
+  //add ending html
   mergedHTML = mergedHTML + setupHTMLEnding()
 
   return mergedHTML;
@@ -315,6 +332,14 @@ function setupHTMLBeginning() {
             color: black;
           }
 
+          @media print {
+            .fixed-element {
+              position: fixed;
+              top: 25px;
+              left: 20px;
+            }
+          }
+
       </style>
     </head>
     <body>
@@ -336,8 +361,11 @@ function setupTurfLabel(rollNumber) {
   var rollFeet = document.querySelector('#rollFeet').value;
   var soNum = document.querySelector('#soNum').value;
 
+  var frontTop = 20 + (0 + ((1586 + 3) * (rollNumber - 1)))
+  var backTop = 20 + (793 + ((1586 + 3) * (rollNumber - 1)))
+
   const html = `
-      <div id="turfWrapper" style="margin-top: 25px; margin-left: 20px; position:absolute;">
+      <div id="turfWrapper" style="top:${frontTop}px; margin-left: 20px; position:absolute;">
           <div id="turfFirst" style="">
               <div style="color: black; font-size: 25px; font-family: Calibri, Helvetica, sans-serif;"><b>NAME</b></div>
               <div style="color: black; font-size: 30pt; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${name}</div>
@@ -361,9 +389,9 @@ function setupTurfLabel(rollNumber) {
       </div>
 
       <div style="page-break-before: always;"> </div>
-      <br>
 
-      <div style="margin-left: 20px; margin-top:30px; position:absolute;">
+
+      <div style="margin-left: 20px; top:${backTop}px; position:absolute;">
 
           <table style="width:35%;">
             <tr>
@@ -462,6 +490,8 @@ function setupTurfLabel(rollNumber) {
           </table>
 
       </div>
+
+      <div style="page-break-before: always;"></div>
   `;
 
   return html
