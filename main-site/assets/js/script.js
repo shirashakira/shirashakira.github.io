@@ -128,7 +128,7 @@ $(function() {
   // turfName.value = "EVERNATURAL PREMIUM"
   // dyeLot.value = "CP326293"
   // rollStart.value = "01"
-  // rollEnd.value = "21"
+  // rollEnd.value = "07"
   // containterNum.value = "TGBU7792184"
   // soNum.value = "181258"
   // rollFeet.value = 100
@@ -291,7 +291,12 @@ function generateHTMLOutputForTurfLabel() {
   //add each pages html
   for (let i = rollStart; i <= rollEnd; i++) {
     if (i > 0) {
-        mergedHTML = mergedHTML + setupTurfLabel(i)
+      var buffer = 0;
+      if (rollStart != 1) {
+        buffer = rollStart - 1
+      }
+
+      mergedHTML = mergedHTML + setupTurfLabel(i, buffer)
     }
   }
 
@@ -354,15 +359,15 @@ function setupHTMLEnding() {
   return html
 }
 
-function setupTurfLabel(rollNumber) {
+function setupTurfLabel(rollNumber, buffer) {
   var name = document.querySelector('#turfName').value;
   var dyeLot = document.querySelector('#dyeLot').value;
   var containerNumber = document.querySelector('#containterNum').value;
   var rollFeet = document.querySelector('#rollFeet').value;
   var soNum = document.querySelector('#soNum').value;
 
-  var frontTop = 20 + (0 + ((1586 + 1.5) * (rollNumber - 1)))
-  var backTop = 20 + (793 + ((1586 + 1.5) * (rollNumber - 1)))
+  var frontTop = 20 + (0 + ((1586 + 1.5) * ((rollNumber - buffer) - 1)))
+  var backTop = 20 + (793 + ((1586 + 1.5) * ((rollNumber - buffer) - 1)))
 
   const html = `
       <div id="turfWrapper" style="top:${frontTop}px; margin-left: 20px; position:absolute;">
