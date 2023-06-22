@@ -361,8 +361,8 @@ function setupTurfLabel(rollNumber) {
   var rollFeet = document.querySelector('#rollFeet').value;
   var soNum = document.querySelector('#soNum').value;
 
-  var frontTop = 20 + (0 + ((1586 + 0) * (rollNumber - 1)))
-  var backTop = 20 + (793 + ((1586 + 0) * (rollNumber - 1)))
+  var frontTop = 20 + (0 + ((1586 + 1.5) * (rollNumber - 1)))
+  var backTop = 20 + (793 + ((1586 + 1.5) * (rollNumber - 1)))
 
   const html = `
       <div id="turfWrapper" style="top:${frontTop}px; margin-left: 20px; position:absolute;">
