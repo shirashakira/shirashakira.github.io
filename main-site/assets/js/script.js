@@ -124,22 +124,22 @@ $(function() {
   var isValidRollFeet = false;
 
   //for testing
-  printButton.disabled = false;
-  turfName.value = "EVERNATURAL PREMIUM"
-  dyeLot.value = "CP326293"
-  rollStart.value = "01"
-  rollEnd.value = "21"
-  containterNum.value = "TGBU7792184"
-  soNum.value = "181258"
-  rollFeet.value = 100
-
-  var isValidTurfName = true;
-  var isValidDyeLot = true;
-  var isValidRollStart = true;
-  var isValidRollEnd = true;
-  var isValidSoNum = true;
-  var isValidContainerNum = true;
-  var isValidRollFeet = true;
+  // printButton.disabled = false;
+  // turfName.value = "EVERNATURAL PREMIUM"
+  // dyeLot.value = "CP326293"
+  // rollStart.value = "01"
+  // rollEnd.value = "21"
+  // containterNum.value = "TGBU7792184"
+  // soNum.value = "181258"
+  // rollFeet.value = 100
+  //
+  // var isValidTurfName = true;
+  // var isValidDyeLot = true;
+  // var isValidRollStart = true;
+  // var isValidRollEnd = true;
+  // var isValidSoNum = true;
+  // var isValidContainerNum = true;
+  // var isValidRollFeet = true;
   //comment out when not testing
 
 
@@ -327,7 +327,7 @@ function setupHTMLBeginning() {
           }
           th, td {
             padding: 5px;
-            padding-bottom: 17px;
+            padding-bottom: 19px;
             text-align: left;
             color: black;
           }
