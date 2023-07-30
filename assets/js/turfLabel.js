@@ -55,7 +55,7 @@ $(function() {
   //comment out when not testing
 
 
-  turfTypes.addEventListener('change', function () {
+  turfTypesInput.addEventListener('change', function () {
     const turfTypeSelected = turfTypesInput.value
     if (turfTypeSelected === "Evernatural Premium") {
       turfName.value = this.value.toUpperCase();
