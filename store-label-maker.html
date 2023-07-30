@@ -1,0 +1,59 @@
+---
+layout: default
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Store Label Printer</title>
+
+    <!-- Scripts -->
+    <script src="../assets/js/storeLabel.js"></script>
+
+  </head>
+
+  <body
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <section class="section bg-gray">
+        <div class="container">
+          <div class="container">
+            <header class="section-header" style="margin-top:-50px;">
+              <h4>Store & Stocking Room Label Maker/Printer</h4>
+              <p class="lead-2 mt-6">Easily Make Store Labels</p>
+            </header>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 mx-auto">
+
+              <form class="input-border" id="turfDetailsForm">
+
+                <div class="form-group">
+                  <select class="form-control" id="labelTypes">
+                    <option value="" disabled selected>Label Type</option>
+                    <option>2 x 4 (with quantities)</option>
+                    <option>2 x 4 (without quantities)</option>
+                    <option>3 x 4</option>
+                  </select>
+                </div>
+
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="customFile" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                  <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+              </form>
+              <br>
+
+              <button type="button" class="btn btn-primary" onclick="makeAndPrintTurfLabelPDF()" id="makePrintButton"" >Print</button>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </body>
+</html>
