@@ -1,10 +1,18 @@
 'use strict';
 
 $(function() {
-  console.log("test1234556")
 
+
+  const excelInput = document.getElementById('customFileUpload')
+  excelInput.addEventListener('change', function () {
+    document.querySelector("#fileUploadLabel").textContent = this.files[0].name;
+
+  });
 
 });
+
+
+
 
 
 function makeAndPrintTurfLabelPDF() {
