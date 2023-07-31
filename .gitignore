@@ -5,3 +5,6 @@ _site/
 marketing-site/.sass-cache/
 marketing-site/.jekyll-cache/
 marketing-site/.jekyll-metadata
+
+# no need to push these modules up, can run npm install
+node_modules/
