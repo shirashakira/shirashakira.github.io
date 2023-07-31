@@ -7,11 +7,11 @@ layout: default
   <head>
     <title>Store Label Printer</title>
 
-    <!-- Scripts -->
-    <script src="../assets/js/storeLabel.js"></script>
     <!-- used to parse the excel spreadsheet -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.4/xlsx.full.min.js"></script>
 
+    <!-- Scripts -->
+    <script src="../assets/js/storeLabel.js"></script>
 
   </head>
 
@@ -32,10 +32,10 @@ layout: default
           <div class="row">
             <div class="col-md-4 mx-auto">
 
-              <form class="input-border" id="turfDetailsForm">
+              <form class="input-border" id="storeLabelDetailsForm">
 
                 <div class="form-group">
-                  <select class="form-control" id="labelTypes">
+                  <select class="form-control" id="labelTypes" onchange="handleDropdownChange(this)">
                     <option value="" disabled selected>Label Type</option>
                     <option>2 x 4 (with quantities)</option>
                     <option>2 x 4 (without quantities)</option>
@@ -50,7 +50,7 @@ layout: default
               </form>
               <br>
 
-              <button type="button" class="btn btn-primary" onclick="makeAndPrintTurfLabelPDF()" id="makePrintButton"" >Print</button>
+              <button type="button" class="btn btn-primary" onclick="makeAndPrintStoreLabelPDF()" id="makePrintButton" disabled>Print</button>
 
             </div>
           </div>

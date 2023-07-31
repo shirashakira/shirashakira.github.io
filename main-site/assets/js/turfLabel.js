@@ -260,14 +260,14 @@ function setupHTMLBeginning() {
     </head>
     <body>
   `
-  return html
+  return html;
 }
 
 function setupHTMLEnding() {
   const html = `
         </body>
       </html>`
-  return html
+  return html;
 }
 
 function setupTurfLabel(rollNumber, buffer) {
