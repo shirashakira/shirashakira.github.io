@@ -237,7 +237,7 @@ function return3x4LabelWithoutQuantities(productCode, description) {
     <div class="label" style="height: 3.33in;">
       <div style="height:.5in;"></div>
       <span class="label-size-22" style="font-size: 32pt; line-height: 40px;">${productCode}</span>
-      <div style="height:.5in;"></div>
+      <div style="height:.4in;"></div>
       <span class="label-size-14" style="font-size: 20pt; display: block; margin-left:.375in; margin-right:.2in; line-height: 32px;">${description}</span>
     </div>
   `;
