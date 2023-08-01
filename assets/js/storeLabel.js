@@ -117,7 +117,8 @@ function return5263HTML() {
         body {
           width: 8.5in;
           height: 11in;
-          font-family: Calibri, sans-serif;
+          font-family: "Calibri (Body)", Calibri, sans-serif;
+          font-weight: 600;
         }
         .label {
           width: 4.0in;
@@ -127,18 +128,16 @@ function return5263HTML() {
           overflow: hidden;
         }
         .label-size-22 {
-          font-family: Calibri, sans-serif;
           margin-left:.375in;
           color: black;
           font-size: 20pt;
           line-height: 24pt;
-          font-weight: 500;
         }
         .label-size-14 {
-          font-family: Calibri, sans-serif;
           color: black;
           font-size: 12pt;
           line-height: 16pt;
+          letter-spacing: -0.15px;
         }
 
         .page-break {
@@ -212,7 +211,7 @@ function return2x4LabelWithQuanties(productCode, description, quantity) {
     <div class="label">
       <div style="height:.375in;"></div>
       <span class="label-size-22">${productCode}</span>
-      <div style="height:.25in;"></div>
+      <div style="height:.1875in;"></div>
       <span class="label-size-14" style="display: block; margin-left:.375in; margin-right:.1875in;">${description}</span>
       <div style="height:.25in;"></div>
       <div style="text-align: right; margin-right:.325in;"><span class="label-size-14">QTY: ${quantity}</span></div>
@@ -226,7 +225,7 @@ function return2x4LabelWithoutQuantities(productCode, description) {
     <div class="label">
       <div style="height:.375in;"></div>
       <span class="label-size-22">${productCode}</span>
-      <div style="height:.25in;"></div>
+      <div style="height:.1875in;"></div>
       <span class="label-size-14" style="display: block; margin-left:.375in; margin-right:.1875in;">${description}</span>
     </div>
   `;
@@ -239,7 +238,7 @@ function return3x4LabelWithoutQuantities(productCode, description) {
       <div style="height:.5in;"></div>
       <span class="label-size-22" style="font-size: 32pt; line-height: 40px;">${productCode}</span>
       <div style="height:.5in;"></div>
-      <span class="label-size-14" style="font-size: 20pt; display: block; margin-left:.375in; margin-right:.2in; line-height: 26px;">${description}</span>
+      <span class="label-size-14" style="font-size: 20pt; display: block; margin-left:.375in; margin-right:.2in; line-height: 32px;">${description}</span>
     </div>
   `;
   return label
