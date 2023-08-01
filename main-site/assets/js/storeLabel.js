@@ -125,7 +125,6 @@ function return5263HTML() {
           margin-left: .15625in;
           float: left;
           overflow: hidden;
-          border:1px dashed black;
         }
         .label-size-22 {
           font-family: Calibri, sans-serif;
