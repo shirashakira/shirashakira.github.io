@@ -1,7 +1,8 @@
 'use strict';
 
-// Variable to store the file data
+// Global Variables
 let uploadedFileData;
+var selectedOption;
 
 $(function() {
   //deal with the file upload
@@ -67,10 +68,11 @@ function checkInputs() {
   }
 }
 
-function handleDropdownChange(dropdown) {
+function handleDropdownChange() {
   // Access the selected value
-  const selectedValue = dropdown.value;
-  console.log('Selected Label Type:', selectedValue);
+  const dropdown = document.getElementById('labelTypes');
+  selectedOption = dropdown.value;
+  console.log('Selected Label Type:', selectedOption);
 
   // Call checkInputs to enable/disable the button based on the file and dropdown values
   checkInputs();
@@ -99,54 +101,63 @@ function makeLabelPDF() {
 
   html2pdf().set(options).from(labelTemplate).toPdf().output('blob').then((pdfBlob) => {
     const pdfUrl = URL.createObjectURL(pdfBlob);
-    printJS({ printable: pdfUrl, type: 'pdf', showModal: true });
+    printJS({ printable: pdfUrl, type: 'pdf', showModal: false });
   });
 }
 
 function return5263HTML() {
+  console.log('Selected Label Type:', selectedOption);
+
   const labelTemplateStart = `
     <!doctype html>
     <html lang="en">
     <head>
       <meta charset="utf-8">
-      <title>HTML & CSS Avery Labels (5263)</title>
       <style>
-      body {
+        body {
           width: 8.5in;
-          margin: 0in .1875in;
+          height: 11in;
           font-family: Calibri, sans-serif;
-          }
-      .label{
-          /* Avery 5263 labels -- CSS and HTML*/
-          width: 4.0in; /* plus .6 inches from padding */
-          height: 2.0in; /* plus .125 inches from padding */
-          padding: .125in .3in 0;
-          margin-right: .125in; /* the gutter */
+        }
+        .label {
+          width: 4.0in;
+          height: 2.0in;
+          margin-left: .15625in;
           float: left;
-
-          text-align: left;
           overflow: hidden;
+          border:1px dashed black;
+        }
+        .label-size-22 {
+          font-family: Calibri, sans-serif;
+          margin-left:.375in;
+          color: black;
+          font-size: 22px;
+          line-height: 28px;
+        }
+        .label-size-14 {
+          font-family: Calibri, sans-serif;
+          color: black;
+          font-size: 14px;
+          line-height: 18px;
+        }
 
-          }
-      .label-size-22 {
-        color: black;
-        font-size: 22px;
-        line-height: 28px;
-      }
-      .label-size-14 {
-        color: black;
-        font-size: 14px;
-        line-height: 18px;
-      }
-      .page-break  {
+        .label-size-22 {
+          font-family: Calibri, sans-serif;
+          margin-left:.375in;
+          color: black;
+          font-size: 22px;
+          line-height: 28px;
+        }
+
+        .page-break {
           clear: left;
-          display:block;
-          page-break-after:always;
-      }
+          display: block;
+          page-break-after: always;
+        }
       </style>
-
     </head>
     <body>
+    <div style="height:.5in;"></div>
   `;
 
   const labelTemplateEnd = `
@@ -159,22 +170,85 @@ function return5263HTML() {
 
   // Check if there is data available
   if (uploadedFileData && uploadedFileData.length > 0) {
-    for (const rowData of uploadedFileData) {
+
+    //for the page break logic
+    let labelCount = 0;
+    let labelsPerPage;
+    if (selectedOption === '2 x 4 (with quantities)') {
+      labelsPerPage = 10;
+    } else if (selectedOption === '2 x 4 (without quantities)') {
+      labelsPerPage = 10;
+    } else if (selectedOption === '3 x 4') {
+      labelsPerPage = 6;
+    }
+
+    for (const rowData of uploadedFileData.slice(1)) {
       const productCode = rowData[1];
       const description = rowData[2];
+      const quantity = rowData[3];
 
-      const label = `
-        <div class="label">
-          <span class="label-size-22">${productCode}</span><br>
-          <span class="label-size-14">${description}</span>
-        </div>
-      `;
+      if (selectedOption === '2 x 4 (with quantities)') {
+        const label = return2x4LabelWithQuanties(productCode, description, quantity);
+        labelHTML += label;
+      } else if (selectedOption === '2 x 4 (without quantities)') {
+        const label = return2x4LabelWithoutQuantities(productCode, description);
+        labelHTML += label;
+      } else if (selectedOption === '3 x 4') {
+        const label = return3x4LabelWithoutQuantities(productCode, description);
+        labelHTML += label;
+      }
 
-      labelHTML += label;
+      labelCount++;
+
+      // Add a page break after every X labels
+      if (labelCount === labelsPerPage) {
+        labelHTML += '<div class="page-break"></div>';
+        labelHTML += '<div style="height:.5in;"></div>'
+        labelCount = 0;
+      }
+
     }
   }
 
   labelHTML += labelTemplateEnd;
 
   return labelHTML;
+}
+
+function return2x4LabelWithQuanties(productCode, description, quantity) {
+  const label = `
+    <div class="label">
+      <div style="height:.375in;"></div>
+      <span class="label-size-22">${productCode}</span>
+      <div style="height:.25in;"></div>
+      <span class="label-size-14" style="display: block; margin-left:.375in; margin-right:.25in;">${description}</span>
+      <div style="height:.25in;"></div>
+      <div style="text-align: right; margin-right:.325in;"><span class="label-size-14">QTY: ${quantity}</span></div>
+    </div>
+  `;
+  return label
+}
+
+function return2x4LabelWithoutQuantities(productCode, description) {
+  const label = `
+    <div class="label">
+      <div style="height:.375in;"></div>
+      <span class="label-size-22">${productCode}</span>
+      <div style="height:.25in;"></div>
+      <span class="label-size-14" style="display: block; margin-left:.375in; margin-right:.25in;">${description}</span>
+    </div>
+  `;
+  return label
+}
+
+function return3x4LabelWithoutQuantities(productCode, description) {
+  const label = `
+    <div class="label" style="height: 3.33in;">
+      <div style="height:.5in;"></div>
+      <span class="label-size-22" style="font-size: 32px; line-height: 40px;">${productCode}</span>
+      <div style="height:.5in;"></div>
+      <span class="label-size-14" style="font-size: 20px; display: block; margin-left:.375in; margin-right:.25in; line-height: 26px;">${description}</span>
+    </div>
+  `;
+  return label
 }
