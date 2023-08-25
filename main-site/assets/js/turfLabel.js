@@ -287,7 +287,7 @@ function setupTurfLabel(rollNumber, buffer) {
               <div style="color: black; font-size: 30pt; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${name}</div>
               <br>
               <div style="color: black; font-size: 25px; font-family: Calibri, Helvetica, sans-serif;"><b>DYE LOT</b></div>
-              <div style="color: black; font-size: 7vw; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${dyeLot}</div>
+              <div style="color: black; font-size: 6vw; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${dyeLot}</div>
               <br>
               <div style="color: black; font-size: 25px; font-family: Calibri, Helvetica, sans-serif;"><b>ROLL #</b></div>
               <div style="margin-top:-120px; text-align: center; color: black; font-size: 200pt; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${rollNumber.toString().padStart(2,'0')}</div>
@@ -297,7 +297,7 @@ function setupTurfLabel(rollNumber, buffer) {
             <div style="color: black; font-size: 30pt; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${name}</div>
             <br>
             <div style="color: black; font-size: 25px; font-family: Calibri, Helvetica, sans-serif;"><b>DYE LOT</b></div>
-            <div style="color: black; font-size: 7vw; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${dyeLot}</div>
+            <div style="color: black; font-size: 6vw; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${dyeLot}</div>
             <br>
             <div style="color: black; font-size: 25px; font-family: Calibri, Helvetica, sans-serif;"><b>ROLL #</b></div>
             <div style="margin-top: -120px; text-align: center; color: black; font-size: 200pt; font-family: Calibri, Helvetica, sans-serif; font-weight: bold;">${rollNumber.toString().padStart(2,'0')}</div>
