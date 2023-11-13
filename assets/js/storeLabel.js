@@ -90,13 +90,27 @@ function makeAndPrintStoreLabelPDF() {
 
 function makeLabelPDF() {
   // Create a new PDF document using jsPDF
-  const doc = new jsPDF('p', 'mm', 'letter');
+  //const doc = new jsPDF('p', 'mm', 'letter');
+  const doc = new jsPDF('p', 'pt', 'letter'); // Use points (pt) for precision
+
+  // Scale factor (e.g., 2 for double size, which simulates increasing the DPI)
+  const scaleFactor = 2;
+  // Adjust the internal scale of jsPDF
+  doc.internal.scaleFactor = scaleFactor;
 
   // Define the label template
   const labelTemplate = return5263HTML();
 
+  // const options = {
+  //   jsPDF: { format: 'letter', orientation: 'portrait' } // Corrected the format value to 'letter'
+  // };
   const options = {
-    jsPDF: { format: 'letter', orientation: 'portrait' } // Corrected the format value to 'letter'
+    jsPDF: { unit: 'pt', format: 'letter', orientation: 'portrait' },
+    // Scale the html2pdf options, effectively increasing the "virtual" DPI
+    html2canvas: { scale: scaleFactor },
+    // Scale the viewport of the page
+    windowWidth: doc.internal.pageSize.getWidth() * scaleFactor,
+    windowHeight: doc.internal.pageSize.getHeight() * scaleFactor
   };
 
   html2pdf().set(options).from(labelTemplate).toPdf().output('blob').then((pdfBlob) => {
