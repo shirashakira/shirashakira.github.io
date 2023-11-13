@@ -173,15 +173,35 @@ $(function() {
 });
 
 function makeAndPrintTurfLabelPDF() {
-  const htmlContent = generateHTMLOutputForTurfLabel()
+  // const htmlContent = generateHTMLOutputForTurfLabel()
+  //
+  // const options = {
+  //   jsPDF: { format: 'a4', orientation: 'landscape' }
+  // };
+  //
+  // html2pdf().set(options).from(htmlContent).toPdf().output('blob').then((pdfBlob) => {
+  //   const pdfUrl = URL.createObjectURL(pdfBlob);
+  //   printJS({printable:pdfUrl, type:'pdf', showModal:true});
+  // });
+
+  //to improve DPI and quality
+  const htmlContent = generateHTMLOutputForTurfLabel();
+
+  // Scale factor (e.g., 2 for double size, which simulates increasing the DPI)
+  const scaleFactor = 2;
 
   const options = {
-    jsPDF: { format: 'a4', orientation: 'landscape' }
+    jsPDF: { unit: 'pt', format: 'a4', orientation: 'landscape' },
+    // Scale the html2pdf options, effectively increasing the "virtual" DPI
+    html2canvas: { scale: scaleFactor },
+    // Scale the viewport of the page
+    windowWidth: 841.89 * scaleFactor, // A4 width in points
+    windowHeight: 595.28 * scaleFactor // A4 height in points
   };
 
   html2pdf().set(options).from(htmlContent).toPdf().output('blob').then((pdfBlob) => {
     const pdfUrl = URL.createObjectURL(pdfBlob);
-    printJS({printable:pdfUrl, type:'pdf', showModal:true});
+    printJS({ printable: pdfUrl, type: 'pdf', showModal: true });
   });
 }
 

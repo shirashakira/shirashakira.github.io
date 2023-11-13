@@ -90,7 +90,6 @@ function makeAndPrintStoreLabelPDF() {
 
 function makeLabelPDF() {
   // Create a new PDF document using jsPDF
-  //const doc = new jsPDF('p', 'mm', 'letter');
   const doc = new jsPDF('p', 'pt', 'letter'); // Use points (pt) for precision
 
   // Scale factor (e.g., 2 for double size, which simulates increasing the DPI)
@@ -101,9 +100,6 @@ function makeLabelPDF() {
   // Define the label template
   const labelTemplate = return5263HTML();
 
-  // const options = {
-  //   jsPDF: { format: 'letter', orientation: 'portrait' } // Corrected the format value to 'letter'
-  // };
   const options = {
     jsPDF: { unit: 'pt', format: 'letter', orientation: 'portrait' },
     // Scale the html2pdf options, effectively increasing the "virtual" DPI
