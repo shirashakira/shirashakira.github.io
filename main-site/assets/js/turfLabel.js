@@ -75,7 +75,7 @@ $(function() {
       rollFeet.value = 100
     } else if (turfTypeSelected === "Monte Verde") {
       turfName.value = this.value.toUpperCase();
-      rollFeet.value = 75
+      rollFeet.value = 100
     } else if (turfTypeSelected === "Monte Verde Lite") {
       turfName.value = this.value.toUpperCase();
       rollFeet.value = 100
