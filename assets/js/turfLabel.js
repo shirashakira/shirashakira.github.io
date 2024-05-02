@@ -88,6 +88,9 @@ $(function() {
     } else if (turfTypeSelected === "Performance Putt") {
       turfName.value = this.value.toUpperCase();
       rollFeet.value = 100
+    } else if (turfTypeSelected === "Pacific Olive") {
+      turfName.value = this.value.toUpperCase();
+      rollFeet.value = 100
     }
 
     isValidTurfName = turfName.checkValidity();
