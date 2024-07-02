@@ -82,10 +82,10 @@ $(function() {
     }  else if (turfTypeSelected === "Willow") {
       turfName.value = this.value.toUpperCase();
       rollFeet.value = 100
-    } else if (turfTypeSelected === "Professional Play") {
+    } else if (turfTypeSelected === "Universal Play") {
       turfName.value = this.value.toUpperCase();
       rollFeet.value = 100
-    } else if (turfTypeSelected === "Performance Putt") {
+    } else if (turfTypeSelected === "Legacy Putt") {
       turfName.value = this.value.toUpperCase();
       rollFeet.value = 100
     } else if (turfTypeSelected === "Pacific Olive") {
