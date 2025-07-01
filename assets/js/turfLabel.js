@@ -66,7 +66,7 @@ $(function() {
 
     } else if (turfTypeSelected === "Sequoia") {
       turfName.value = this.value.toUpperCase();
-      rollFeet.value = 75
+      rollFeet.value = 100
     } else if (turfTypeSelected === "Sequoia Lite") {
       turfName.value = this.value.toUpperCase();
       rollFeet.value = 100
