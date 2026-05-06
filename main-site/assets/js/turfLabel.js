@@ -91,8 +91,13 @@ $(function() {
     } else if (turfTypeSelected === "Pacific Olive") {
       turfName.value = this.value.toUpperCase();
       rollFeet.value = 100
+    } else if (turfTypeSelected === "Pacific Olive Plush") {
+      turfName.value = this.value.toUpperCase();
+      rollFeet.value = 100
+    } else if (turfTypeSelected === "Primavera") {
+      turfName.value = this.value.toUpperCase();
+      rollFeet.value = 100
     }
-
     isValidTurfName = turfName.checkValidity();
     isValidRollFeet = rollFeet.checkValidity();
 
